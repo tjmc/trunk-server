@@ -19,6 +19,7 @@ const build_call_list = (items) => {
             time: item.time,
             srcList: item.srcList,
             star: item.star,
+	    transcript: item.transcript,
             freq: item.freq,
             len: Math.round(item.len)
         };
@@ -37,6 +38,7 @@ async function get_calls(query, numResults, middleDate, res) {
         name: true,
         time: true,
         srcList: true,
+	transcript: true,
         freq: true,
         star: true,
         len: true,
@@ -211,6 +213,7 @@ function package_call(item) {
         path: item.path,
         name: item.name,
         freq: item.freq,
+	transcript: item.transcript,
         srcList: item.srcList,
         star: item.star,
         len: Math.round(item.len)

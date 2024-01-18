@@ -17,6 +17,7 @@ var callSchema = mongoose.Schema({
   spikeCount: Number,
   url: String,
   emergency: Boolean,
+  transcript: String,
   path: String,
   len: Number,
   star: {

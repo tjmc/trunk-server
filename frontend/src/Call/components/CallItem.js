@@ -104,15 +104,21 @@ const CallItem = (props) => {
     playStatus = (<div style={cirlceStyle}/>)
   } 
 
-  return (
-    <Table.Row draggable="true" onClick={(e) => props.onClick({ call: call }, e)} {...rowSelected} onDragStart={onDragStart} data-callid={call._id}>
-      <Table.Cell>{playStatus}</Table.Cell>
-      <Table.Cell>{call.len}</Table.Cell>
-      <Table.Cell>{talkgroup}</Table.Cell>
-      <Table.Cell>{`${time.toLocaleTimeString()} ${time.toLocaleDateString() !== new Date().toLocaleDateString() ? time.getMonth() + 1 + '/' + time.getDate() : ''}`}</Table.Cell> 
-      <Table.Cell onMouseEnter={() => setStarVisible(true)} onMouseLeave={() => setStarVisible(false)} onClick={handleStarClicked}>{starButton}</Table.Cell>
+ return (
+  <>
+    <Table.Row class="rowone" draggable="true" onClick={(e) => props.onClick({ call: call }, e)} {...rowSelected} onDragStart={onDragStart} data-callid={call._id}>
+      <Table.Cell style={{ borderBottom: 'none' }}>{playStatus}</Table.Cell>
+      <Table.Cell style={{ borderBottom: 'none' }}>{call.len}</Table.Cell>
+      <Table.Cell style={{ borderBottom: 'none' }}>{talkgroup}</Table.Cell>
+      <Table.Cell style={{ borderBottom: 'none' }}>{time.toLocaleTimeString()}</Table.Cell>
+      <Table.Cell style={{ borderBottom: 'none' }} onMouseEnter={() => setStarVisible(true)} onMouseLeave={() => setStarVisible(false)} onClick={handleStarClicked}>{starButton}</Table.Cell>
     </Table.Row>
-  );
+    <Table.Row class="rowtwo" draggable="true" onClick={(e) => props.onClick({ call: call }, e)} {...rowSelected} onDragStart={onDragStart} data-callid={call._id}>
+      <Table.Cell style={{ borderTop: 'none' }}><i aria-hidden="true" class="black closed captioning outline icon"></i></Table.Cell>
+      <Table.Cell style={{ borderTop: 'none' }} colSpan={4}>{call.transcript}</Table.Cell>
+    </Table.Row>
+  </>
+);
 }
 
 export default CallItem;

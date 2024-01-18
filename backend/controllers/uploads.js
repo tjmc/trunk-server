@@ -64,6 +64,7 @@ exports.upload = async function (req, res, next) {
   }
   var startTime = req.body.start_time;
   var emergency = parseInt(req.body.emergency);
+  var transcript = req.body.transcript;
 
   // Blocking sensitive talkgroups
 if ((shortName == "hennearmer") && ((talkgroupNum == 3421) || (talkgroupNum == 3423))) {
@@ -136,6 +137,7 @@ if ((shortName == "hennearmer") && ((talkgroupNum == 3421) || (talkgroupNum == 3
     spikeCount: spikeCount,
     url: url,
     emergency: emergency,
+    transcript: transcript,
     path: local_path,
     srcList: srcList,
     len: -1
